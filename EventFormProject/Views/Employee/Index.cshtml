@@ -1,0 +1,54 @@
+﻿@using EventFormProject.Models
+@model List<Employee>
+
+@{
+    ViewBag.Title = "Employee List";
+}
+@if (Model.Count > 0)
+{
+<h2>@ViewBag.PageTitle</h2>
+<hr/>
+<h2>@ViewBag.PageSubTitle</h2>
+
+<table class="table table-hover table-striped table-light">
+    <thead>
+        <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>Country</th>
+    <th>Phone No</th>
+    <th>Email-Id</th>
+    <th>Skill sets</th>
+    <th>Avatar</th>
+    <th>Zipcode</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.EmployeeId</td>
+                <td>@employee.EmployeeName</td>
+                <td>@employee.EmployeeAddress</td>
+                <td>@employee.EmployeeCity</td>
+                <td>@employee.EmployeeCountry</td>
+                <td>@employee.EmployeePhone</td>
+                <td>@employee.EmployeeMail</td>
+                <td>@employee.EmployeeSkill</td>
+                <td>@employee.EmployeeAvtar</td>
+                <td>@employee.EmployeeZipcode</td>
+                <td>
+                    @Html.ActionLink("Show Details", "Details", new { empId = employee.EmployeeId }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+        </tbody>
+
+    </table>
+}
+else
+            {
+                <h1>Record not found.......!</h1>
+            }
